@@ -8,5 +8,10 @@
             "email": "marius.kuzminskas@adroiti.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
     "require": {}
 }
