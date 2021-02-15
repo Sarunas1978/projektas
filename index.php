@@ -2,22 +2,17 @@
 require_once 'vendor/autoload.php';
 
 use app\core\Application;
-use app\core\Router;
-
 
 $app = new Application();
 
 
+$app->router->get('/', function () {
+    return "this is home page";
+});
 
+//
+$app->router->get('/about', function () {
+    return "this is about page";
+});
 
-$router = new Router();
-//
-//$router->get('/', function () {
-//    return "this is home page";
-//});
-//
-//$router->get('/about', function () {
-//    return "this is about page";
-//});
-//
-//$app->run();
+$app->run();
