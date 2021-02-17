@@ -4,17 +4,22 @@
 namespace app\core;
 
 /**
- * Get user page form url
  *
- * [REQUEST_URI] => /todos?id=5
- * extract /todos
  *
  * Class Request
  * @package app\core
  */
 class Request
 {
-    public function getPath()
+    /**
+     * Get user page form url
+     *
+     * [REQUEST_URI] => /todos?id=5
+     * extract /todos
+     *
+     * @return string
+     */
+    public function getPath(): string
     {
         $path = $_SERVER['REQUEST_URI'] ?? '/';
 
