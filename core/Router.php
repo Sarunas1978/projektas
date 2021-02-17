@@ -46,10 +46,22 @@ class Router
 
     public function resolve()
     {
-        echo "<pre>";
-        print_r($this->request->getPath());
-        echo "</pre>";
-        exit;
+        $path = $this->request->getPath();
+        $method = $this->request->getMethod();
+
+        // trying to run a route from routes array
+        $callback = $this->routes[$method][$path] ?? false;
+
+        // if there is no such route added, we say not exist
+        if ($callback === false) :
+            echo "Page doesnt exists";
+            die();
+        endif;
+
+        // page dose exsist we call user function
+        echo call_user_func($callback);
+
+
     }
 
 
