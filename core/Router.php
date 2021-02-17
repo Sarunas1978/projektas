@@ -32,10 +32,11 @@ class Router
      * @var array
      */
     protected array $routes = [];
+    public Request $request;
 
-    public function __construct()
+    public function __construct($request)
     {
-        echo "This is Router constructor<br>";
+        $this->request = $request;
     }
 
     public function get($path, $callback)
@@ -46,7 +47,7 @@ class Router
     public function resolve()
     {
         echo "<pre>";
-        print_r($_SERVER);
+        print_r($this->request->getPath());
         echo "</pre>";
         exit;
     }
