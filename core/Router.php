@@ -33,10 +33,12 @@ class Router
      */
     protected array $routes = [];
     public Request $request;
+    public Response $response;
 
-    public function __construct($request)
+    public function __construct(Request $request, Response $response)
     {
         $this->request = $request;
+        $this->response = $response;
     }
 
     /**
@@ -68,6 +70,8 @@ class Router
 
         // if there is no such route added, we say not exist
         if ($callback === false) :
+            // 404
+            $this->response->setResponseCode(404);
             echo "Page doesnt exists";
             die();
         endif;
@@ -83,6 +87,12 @@ class Router
 
     }
 
+    /**
+     * Renders the page and applies the layout
+     *
+     * @param string $view
+     * @return string|string[]
+     */
     public function renderView(string $view)
     {
         $layout = $this->layoutContent();
@@ -94,6 +104,11 @@ class Router
         //
     }
 
+    /**
+     * Returns the layout HTML content
+     *
+     * @return false|string
+     */
     protected function layoutContent()
     {
         // start buffering
@@ -104,6 +119,12 @@ class Router
 
     }
 
+    /**
+     * Returns only the given page HTML content
+     *
+     * @param $view
+     * @return false|string
+     */
     protected function pageContent($view)
     {
         // start buffering
