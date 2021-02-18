@@ -22,7 +22,7 @@ class Router
      * ],
      * ['post' => [
      *  ['/' => function return,],
-     *  ['/about' => function return,],
+     *  ['/contact' => function return,],
      * ]]
      * ]
      *
@@ -53,6 +53,17 @@ class Router
     }
 
     /**
+     * This creates post path and handling in routes array.
+     *
+     * @param $path
+     * @param $callback
+     */
+    public function post($path, $callback)
+    {
+        $this->routes['post'][$path] = $callback;
+    }
+
+    /**
      * Executes user function if it is set in routes array
      */
     public function resolve()
@@ -72,8 +83,7 @@ class Router
         if ($callback === false) :
             // 404
             $this->response->setResponseCode(404);
-            echo "Page doesnt exists";
-            die();
+            return $this->renderView('_404');
         endif;
 
         // if our callback value is string
@@ -133,6 +143,7 @@ class Router
         // stop and return buffering
         return ob_get_clean();
     }
+
 
 
 }
