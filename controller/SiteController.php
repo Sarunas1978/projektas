@@ -6,6 +6,7 @@ namespace app\controller;
 
 use app\core\Application;
 use app\core\Controller;
+use app\core\Request;
 
 class SiteController extends Controller
 {
@@ -51,8 +52,16 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function handleContact()
+    public function handleContact(Request $request)
     {
+        // we user get body method to see user input
+        $body = $request->getBody();
+
+        echo "<pre>";
+        var_dump($body);
+        echo "</pre>";
+        exit;
+
         return "handling form from site controller handle form method";
     }
 }
