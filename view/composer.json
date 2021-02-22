@@ -1,0 +1,17 @@
+{
+    "name": "markuz/almost-lara",
+    "description": "Almos lara mvc learning",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "mariusKuzminskasAdroiti",
+            "email": "marius.kuzminskas@adroiti.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "require": {}
+}

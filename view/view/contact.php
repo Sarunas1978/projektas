@@ -1,6 +1,6 @@
-<h1>This is Register page</h1>
+<h1>This is contact page</h1>
 
-<form action="" method="post">
+<form action="" method="post" >
     <div class="form-group">
         <label for="email">Email address</label>
         <input name="text" type="text" class="form-control" id="email">
