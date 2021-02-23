@@ -22,11 +22,59 @@ class AuthController extends Controller
         $this->userModel = new UserModel();
     }
 
-    public function login()
+    public function login(Request $request)
     {
         // have ability to change laout
-        $this->setLayout('auth');
-        return $this->render('login');
+//        $this->setLayout('auth');
+
+        if ($request->isGet()) :
+            $data = [
+                'email' => '',
+                'password' => '',
+                'errors' => [
+                    'emailErr' => '',
+                    'passwordErr' => '',
+                ]
+            ];
+            return $this->render('login', $data);
+        endif;
+
+        if ($request->isPost()) :
+            // we get all post values sanitized
+            $data = $request->getBody();
+
+            // validation
+            $data['errors']['emailErr'] = $this->vld->validateLoginEmail($data['email'], $this->userModel);
+
+            $data['errors']['passwordErr'] = $this->vld->validateEmpty($data['password'], 'Please enter your password');
+
+            // if there are no errors
+            if ($this->vld->ifEmptyArr($data['errors'])) {
+                // no errors
+                // email was found and password was entered
+                $loggedInUser = $this->userModel->login($data['email'], $data['password']);
+
+                echo "<pre>";
+                var_dump($loggedInUser);
+                echo "</pre>";
+                exit;
+
+                if ($loggedInUser) {
+                    // create session
+                    // password match
+                    // die('email and passs match start session immediately');
+                    //$this->createUserSession($loggedInUser);
+                } else {
+                    $data['errors']['passwordErr'] = 'Wrong password or email';
+                    // load view with errors
+                    return $this->render('login', $data);
+                }
+            }
+
+
+            return $this->render('login', $data);
+        endif;
+
     }
 
     public function register(Request $request)
@@ -36,19 +84,18 @@ class AuthController extends Controller
 
             // create data
             $data = [
-                'name'      => '',
-                'email'     => '',
-                'password'  => '',
+                'name' => '',
+                'email' => '',
+                'password' => '',
                 'confirmPassword' => '',
                 'errors' => [
-                    'nameErr'      => '',
-                    'emailErr'     => '',
-                    'passwordErr'  => '',
+                    'nameErr' => '',
+                    'emailErr' => '',
+                    'passwordErr' => '',
                     'confirmPasswordErr' => '',
                 ],
                 'currentPage' => 'register',
             ];
-
 
 
             return $this->render('register', $data);
@@ -80,14 +127,12 @@ class AuthController extends Controller
                     // set flash msg
 //                    flash('register_success', 'You have registered successfully');
                     // header("Location: " . URLROOT . "/users/login");
-//                    redirect('/login');
+                    $request->redirect('/login');
                 } else {
                     die('Something went wrong in adding user to db');
                 }
 
             endif;
-
-
 
 
             return $this->render('register', $data);
