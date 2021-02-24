@@ -49,6 +49,24 @@ class Router
      */
     public function get($path, $callback)
     {
+        // 12345678910
+        //"/post/{id}"
+        if (strpos($path, '{')):
+            $startPos = strpos($path, '{');
+            $endPos = strpos($path, '}');
+            $argName = substr($path, $startPos + 1, $endPos - $startPos - 1);
+            $callback['urlParamName'] = $argName;
+            $path = substr($path, 0, $startPos -1);
+
+//        echo "<pre>";
+//        var_dump($path);
+////        var_dump($this->routes);
+//        echo "</pre>";
+//        exit;
+
+        endif;
+
+
         $this->routes['get'][$path] = $callback;
     }
 
@@ -71,9 +89,19 @@ class Router
         $path = $this->request->getPath();
         $method = $this->request->method();
 
+//        echo "<pre>";
+//        var_dump($path);
+//        echo "</pre>";
+//        exit;
+
 
         // trying to run a route from routes array
         $callback = $this->routes[$method][$path] ?? false;
+
+//        echo "<pre>";
+//        print_r($this->routes);
+//        echo "</pre>";
+//        exit;
 
         // if there is no such route added, we say not exist
         if ($callback === false) :
@@ -93,11 +121,22 @@ class Router
             $instance = new $callback[0];
             Application::$app->controller = $instance;
             $callback[0] = Application::$app->controller;
+
+            // check if we have url arguments in callback array
+            if (isset($callback['urlParamName'])) :
+                //     [0] => app\controller\PostsController
+//                    [1] => post
+//                    [urlParamName] => id
+                $urlParamName = $callback['urlParamName'];
+                // make call back array with 2 members
+                array_splice($callback, 2, 1);
+            endif;
+
         endif;
 
 
         // page dose exsist we call user function
-        return call_user_func($callback, $this->request);
+        return call_user_func($callback, $this->request, $urlParamName ?? null);
 
     }
 
@@ -125,7 +164,12 @@ class Router
      */
     protected function layoutContent()
     {
-        $layout = Application::$app->controller->layout;
+        if (isset(Application::$app->controller)) :
+            $layout = Application::$app->controller->layout;
+        else :
+            $layout = 'main';
+        endif;
+
         // start buffering
         ob_start();
         include_once Application::$ROOT_DIR . "/view/layout/$layout.php";
@@ -138,6 +182,7 @@ class Router
      * Returns only the given page HTML content
      *
      * @param $view
+     * @param $params
      * @return false|string
      */
     protected function pageContent($view, $params)
