@@ -61,6 +61,23 @@ class PostsController extends Controller
         $request->redirect('/posts');
     }
 
+    public function addPost()
+    {
+        //check if get or post
+
+        //
+
+        return $this->render('posts/addPost');
+    }
+
+    public function editPost(Request $request, $urlParam = null)
+    {
+        $data = [
+            $urlParam['name'] => $urlParam['value']
+        ];
+        return $this->render('posts/editPost', $data);
+    }
+
 }
 
 
