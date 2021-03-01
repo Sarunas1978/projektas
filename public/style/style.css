@@ -97,3 +97,13 @@ footer{
         margin: 20px 0;
         }
 }
+
+/* google maps
+● Aukštis - 300px
+● Plotis - per visą puslapį
+● Turi būti pažymėta lokacija: Saulėtekio al. 15 */
+
+#map{
+    height: 300px;
+    width: 100vw;
+}

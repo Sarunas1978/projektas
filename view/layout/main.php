@@ -9,7 +9,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
           integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="style/style.css">
-
+    <script src="src/index.js"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBFolbq6F8N5IjAylsTEx3S9lygJeHS1s&callback=initMap&libraries=&v=weekly"
+      async defer></script>
     <title>MVC</title>
 </head>
 <body >
@@ -89,14 +92,13 @@
     </div>
 </div>
 
+<div id="map"></div>
+
 <footer class="bg-danger d-flex justify-content-center text-light">
     <div class=" align-self-center" >
         &copy; 2021. Šarūnas Malinauskas, all rights reserved.
     </div>
 </footer>
-
-
-
 
 
 
