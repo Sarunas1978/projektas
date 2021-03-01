@@ -10,9 +10,11 @@
           integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="style/style.css">
     <script src="src/index.js"></script>
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBFolbq6F8N5IjAylsTEx3S9lygJeHS1s&callback=initMap&libraries=&v=weekly"
-      async defer></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script defer src="src/vueArray.js"></script> 
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBFolbq6F8N5IjAylsTEx3S9lygJeHS1s&callback=initMap&libraries=&v=weekly"></script>
     <title>MVC</title>
 </head>
 <body >
@@ -56,40 +58,24 @@
 
 <div class="d-flex justify-content-around"> 
     <div id="change400" class="containerMain d-flex justify-content-center p-5">
-        <div class="container_small m-1">
-            <div >
+        <div v-for="array in todo_array" class="container_small m-1">
+            <div>
                 <img class="image_service"  src="img/ball.jpg" alt="">
             </div>
-            <div class="title_service m_r_l ">
-                mouse
+            <div class="d-flex flex-column">
+                <div class="title_service m_r_l align-self-center">
+                    <b>{{array.title}}</b>
+                </div>
+                <div class="m_r_l">
+                    {{array.text}}
+                </div>
             </div>
-            <div class="m_r_l">
-                nieko
-            </div>
-        </div>
-        <div class="container_small m-1">
-            <div >
-                <img class="image_service"  src="img/ball.jpg" alt="">
-            </div>
-            <div class="title_service m_r_l ">
-                dog
-            </div>
-            <div class="m_r_l">
-            loja niekorger5gh refgergerhger therthgetrhteh  rthtrehterh t htht
-            </div>
-        </div>
-        <div class="container_small m-1">
-            <div >
-                <img class="image_service"  src="img/ball.jpg" alt="">
-            </div>
-            <div class="title_service m_r_l ">
-                cat
-            </div>
-            <div class="m_r_l">
-                miaukia
-            </div>
-        </div>
+        </div>    
     </div>
+</div>
+
+<div class="container">
+    {{content}}
 </div>
 
 <div id="map"></div>
@@ -100,15 +86,6 @@
     </div>
 </footer>
 
-
-
-<!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-<!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-        crossorigin="anonymous"></script> -->
 
 </body>
 </html>
