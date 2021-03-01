@@ -1,0 +1,99 @@
+body{
+    margin: 0;
+    position: relative;
+}
+/*  Header settings
+● aukštis - 70px
+● nuorodų sekcijos kairėje ir dešinėje
+● nuorodos privalo būti vertikaliai centruotos
+● visa navigacija privalo būti maks. 800px pločio, horizontaliai centruota puslapyje
+● mažinant naršyklės plotį iki 400px, nuorodos negali pasislėpti už jos ribų */
+.nav{
+    width: 800px;
+    min-width: 400px;
+    height: 70px;
+}
+header{
+    height: 70px;
+}
+/*  Foto settings
+● aukštis - 300px
+● plotis - per visą ekraną
+● nuotrauka turi būti uždėta panaudojant background-image pasirinktame tag’e, o ne kaip
+img
+● nuotrauka privalo būti užkraunama iš pačio projekto, o ne nukopijavus nuorodą iš
+google paieškos
+● sumažinus naršyklės plotį iki 400px, nuotraukos aukštis turi pasikeisti į 150px */
+.foto{
+    background-image: url('../img/ball.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100vw;
+    height: 300px;
+    width: 100vw;
+}
+/* container reikalavimai
+● maks. plotis - 800px
+● aukštis - 400px
+● horizontaliai centruotas per puslapio vidurį
+● atitraukimas nuo viršaus ir apačios - 20px */
+.containerMain{
+max-width: 800px;
+height: 400px;
+margin: 20px 0;
+}
+
+/* 
+● Būtinas pilkas 1px apvadas (angl. border)
+● Nuotraukos aukštis užimti 40% jos container’io.
+● Paslaugos pavadinimas turi būti horizontaliai centruotas ir atitrauktas po 10px nuo
+nuotraukos ir aprašymo
+● Paslaugos aprašymas privalo būti akivaizdžiai mažesnio šrifto dydžio
+● Paslaugos pavadinimas ir aprašymas turi būti atitrauktas nuo container’io kraštų po 5px */
+.container_small{
+    /* height: 600px; */
+    width: 200px;
+    border: 1px solid grey;
+}
+.image_service{
+    height: 40%;
+    overflow: hidden;
+
+}
+.title_service{
+    size: 16px;
+    margin: 10px 0;
+}
+.m_r_l{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+img{
+    width: 198px;
+}
+
+/* footer
+ ● Aukštis - 70px
+● Plotis - per visą puslapį
+● Privalo turėti pasirinktą fono spalvą
+● Horizontaliai ir vertikaliai centruotas tekstas:
+○ © 2019. Vardas Pavardė, all rights reserved. */
+footer{
+    height:  70px;
+    width: 100vw;
+}
+
+#change400{
+    display: flex;
+}
+
+@media only screen and (max-width: 400px){
+    #change400{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .containerMain{
+        height: auto;
+        margin: 20px 0;
+        }
+}
