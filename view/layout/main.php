@@ -29,7 +29,7 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-link" href="/">Home</a>
-                <!-- <a class="nav-link" href="/about">About</a> -->
+
                 <?php if(\app\core\Session::isUserLoggedIn()) : ?>
                 <a class="nav-link" href="/posts">Comments</a>
                 <?php endif; ?>
@@ -58,10 +58,12 @@
 <!-- IMAGE ADDED -->
 <div class="foto"></div>
 
-<div class="container">
+<div>
+ <!-- class="container"> -->
     {{content}}
 </div>
 
+<!-- <div id="map"></div> -->
 
 <footer class="bg-danger d-flex justify-content-center text-light">
     <div class=" align-self-center" >
