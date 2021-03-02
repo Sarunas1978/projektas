@@ -1,4 +1,4 @@
-
+<div class="mt-5"></div>
 <div class="row">
     <div class="col">
         <h1>Posts</h1>
@@ -11,6 +11,7 @@
         </a>
     </div>
 </div>
+
 
 <div class="row">
     <?php foreach ($posts as $post) :  ?>
@@ -26,5 +27,6 @@
             </div>
         </div>
     <?php endforeach; ?>
-
 </div>
+
+<div class="mb-5"></div>

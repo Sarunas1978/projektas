@@ -22,15 +22,17 @@
 <header>
     <div class="d-flex  justify-content-center">
     <nav class="navbar navbar-expand-sm navbar-dark bg-danger nav">
-        <a class="navbar-brand" href="#">Almost<strong>Lara</strong></a>
+        <a class="navbar-brand" href="#">TennisWorld</strong></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-link" href="/">Home</a>
-                <a class="nav-link" href="/about">About</a>
-                <a class="nav-link" href="/contact">Contact</a>
+                <!-- <a class="nav-link" href="/about">About</a> -->
+                <?php if(\app\core\Session::isUserLoggedIn()) : ?>
+                <a class="nav-link" href="/posts">Comments</a>
+                <?php endif; ?>
             </div>
     <!--        when not logged in -->
             <?php if(!\app\core\Session::isUserLoggedIn()) : ?>
@@ -56,29 +58,10 @@
 <!-- IMAGE ADDED -->
 <div class="foto"></div>
 
-<div class="d-flex justify-content-around"> 
-    <div id="change400" class="containerMain d-flex justify-content-center p-5">
-        <div v-for="array in todo_array" class="container_small m-1">
-            <div>
-                <img class="image_service"  src="img/ball.jpg" alt="">
-            </div>
-            <div class="d-flex flex-column">
-                <div class="title_service m_r_l align-self-center">
-                    <b>{{array.title}}</b>
-                </div>
-                <div class="m_r_l">
-                    {{array.text}}
-                </div>
-            </div>
-        </div>    
-    </div>
-</div>
-
 <div class="container">
     {{content}}
 </div>
 
-<div id="map"></div>
 
 <footer class="bg-danger d-flex justify-content-center text-light">
     <div class=" align-self-center" >

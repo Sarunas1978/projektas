@@ -18,8 +18,8 @@ class SiteController extends Controller
     public function home()
     {
         $params = [
-            'name' => "AlmostLara",
-            'subtitle' => "This is a nice way to learn PHP"
+            // 'name' => "TennisWorld",
+            // 'subtitle' => "This is a nice way to learn PHP"
         ];
 
         return $this->render('home', $params);
@@ -28,24 +28,24 @@ class SiteController extends Controller
      * This serves the about form view
      * @return string
      */
-    public function about()
-    {
-        $params = [
-            'version' => "1.0.0",
-        ];
-        // lets render view
-        return $this->render('about', $params);
-    }
+    // public function about()
+    // {
+    //     $params = [
+    //         'version' => "1.0.0",
+    //     ];
+    //     // lets render view
+    //     return $this->render('about', $params);
+    // }
 
     /**
      * This serves the contact form view
      * @return string
      */
-    public function contact()
-    {
-        // lets render view
-        return $this->render('contact');
-    }
+    // public function contact()
+    // {
+    //     // lets render view
+    //     return $this->render('contact');
+    // }
 
     /**
      * This is were we handle post contact form.

@@ -26,14 +26,14 @@ $config =[
 $app = new Application(dirname(__DIR__), $config);
 
 $app->router->get('/', [SiteController::class, 'home']);
-$app->router->get('/about', [SiteController::class, 'about']);
+// $app->router->get('/about', [SiteController::class, 'about']);
 //$app->router->get('/about', 'about');
-$app->router->get('/contact', [SiteController::class, 'contact']);
-$app->router->get('/fn', function () {
-    return 56 + 76;
-});
+// $app->router->get('/contact', [SiteController::class, 'contact']);
+// $app->router->get('/fn', function () {
+//     return 56 + 76;
+// });
 // we create post path
-$app->router->post('/contact', [SiteController::class, 'handleContact']);
+// $app->router->post('/contact', [SiteController::class, 'handleContact']);
 
 // routes for login and register
 $app->router->get('/login', [AuthController::class, 'login']);
